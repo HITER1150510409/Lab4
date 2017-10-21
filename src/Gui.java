@@ -30,7 +30,7 @@ import javax.swing.JTextField;
 public class Gui {
   JFrame frame;
   Picture G;//
-  GraphDraft g;
+  GraphDraft g;//
   DrawPanel panel;
   String path;
   JScrollPane scrollPane;
