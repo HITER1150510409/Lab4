@@ -21,7 +21,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 /*
  * To do list:
- * 修复coordination函数有可能出现的顺序错误——不仅处理子节点，也处理所有子节点之前的节点
+ * 淇coordination
  */
 
 
@@ -29,7 +29,7 @@ import javax.swing.JTextField;
 // hard to understand some of the functions
 public class Gui {
   JFrame frame;
-  Picture G;
+  Picture G;//
   GraphDraft g;
   DrawPanel panel;
   String path;
@@ -96,7 +96,7 @@ public class Gui {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.getContentPane().setLayout(null);
 
-    JButton btnNewButton = new JButton("选择文件");
+    JButton btnNewButton = new JButton("閫夋嫨鏂囦欢");
     btnNewButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         JFileChooser jfc = new JFileChooser();
@@ -106,21 +106,21 @@ public class Gui {
         	}
           path = jfc.getSelectedFile().getAbsolutePath();
 
-          // 获取图的信息，里面包含所有需要画的点的信息和边的信息
+          // 鑾峰彇鍥剧殑淇℃伅锛岄噷闈㈠寘鍚墍鏈夐渶瑕佺敾鐨勭偣鐨勪俊鎭拰杈圭殑淇℃伅
           g = G.getGraphDraft();
           panel.display(g);
           walks = G.randomWalk();
           nowstep = 1;
           flag = false;
-          // 这里是如何读取一个点的信息，x和y是坐标，这个坐标只是相对位置，实际要放在哪要具体计算。
-          // 普通的点st存储字符串内容。有些点st=null，这样的点不需要显示出来，但他们的坐标在画边时有用
+          // 杩欓噷鏄浣曡鍙栦竴涓偣鐨勪俊鎭紝x鍜寉鏄潗鏍囷紝杩欎釜鍧愭爣鍙槸鐩稿浣嶇疆锛屽疄闄呰鏀惧湪鍝鍏蜂綋璁＄畻銆�
+          // 鏅�氱殑鐐箂t瀛樺偍瀛楃涓插唴瀹广�傛湁浜涚偣st=null锛岃繖鏍风殑鐐逛笉闇�瑕佹樉绀哄嚭鏉ワ紝浣嗕粬浠殑鍧愭爣鍦ㄧ敾杈规椂鏈夌敤
         }
       }
     });
     btnNewButton.setBounds(1194, 7, 127, 39);
     frame.getContentPane().add(btnNewButton);
 
-    JLabel lblNewLabel = new JLabel("第一个单词：");
+    JLabel lblNewLabel = new JLabel("绗竴涓崟璇嶏細");
     lblNewLabel.setBounds(905, 57, 84, 27);
     frame.getContentPane().add(lblNewLabel);
 
@@ -129,7 +129,7 @@ public class Gui {
     frame.getContentPane().add(textField1);
     textField1.setColumns(10);
 
-    JLabel lblNewLabel1 = new JLabel("第二个单词");
+    JLabel lblNewLabel1 = new JLabel("绗簩涓崟璇�");
     lblNewLabel1.setBounds(1141, 62, 65, 16);
     frame.getContentPane().add(lblNewLabel1);
 
@@ -138,7 +138,7 @@ public class Gui {
     frame.getContentPane().add(textField2);
     textField2.setColumns(10);
 
-    JButton btnNewButton1 = new JButton("计算最短路");
+    JButton btnNewButton1 = new JButton("璁＄畻鏈�鐭矾");
     btnNewButton1.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         String word1 = textField1.getText().replace(" ", "");
@@ -173,7 +173,7 @@ public class Gui {
                 shortpath += " => " + g.getPoints()[result[i]].getSt();
               }
             }
-            shortpath += " 路径长度为： " + result[result[0] + 1];
+            shortpath += " 璺緞闀垮害涓猴細 " + result[result[0] + 1];
             textField5.setText(shortpath);
             panel.display(g);
           }
@@ -202,7 +202,7 @@ public class Gui {
     btnNewButton1.setBounds(1188, 107, 133, 29);
     frame.getContentPane().add(btnNewButton1);
 
-    JButton btnNewButton2 = new JButton("查询桥接词");
+    JButton btnNewButton2 = new JButton("鏌ヨ妗ユ帴璇�");
     btnNewButton2.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         String word1 = textField1.getText().replace(" ", "");
@@ -247,7 +247,7 @@ public class Gui {
     frame.getContentPane().add(textField3);
     textField3.setColumns(10);
 
-    JButton btnNewButton3 = new JButton("提交");
+    JButton btnNewButton3 = new JButton("鎻愪氦");
     btnNewButton3.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         String line = textField3.getText();
@@ -263,15 +263,15 @@ public class Gui {
     frame.getContentPane().add(textField4);
     textField4.setColumns(10);
 
-    JLabel lblNewLabel2 = new JLabel("查询结果");
+    JLabel lblNewLabel2 = new JLabel("鏌ヨ缁撴灉");
     lblNewLabel2.setBounds(905, 279, 65, 33);
     frame.getContentPane().add(lblNewLabel2);
 
-    JLabel lblNewLabel3 = new JLabel("新生成文本");
+    JLabel lblNewLabel3 = new JLabel("鏂扮敓鎴愭枃鏈�");
     lblNewLabel3.setBounds(895, 529, 88, 27);
     frame.getContentPane().add(lblNewLabel3);
 
-    JButton btnNewButton4 = new JButton("随机游走");
+    JButton btnNewButton4 = new JButton("闅忔満娓歌蛋");
     btnNewButton4.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         String s;
@@ -311,7 +311,7 @@ public class Gui {
     scrollPane2.setBounds(993, 186, 328, 204);
     frame.getContentPane().add(scrollPane2);
 
-    JButton btnNewButton5 = new JButton("保存图片");
+    JButton btnNewButton5 = new JButton("淇濆瓨鍥剧墖");
     btnNewButton5.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
 
